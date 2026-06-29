@@ -4,6 +4,8 @@ import { BackgroundScene } from './components/BackgroundScene';
 import { BottomDock } from './components/BottomDock';
 import { CodeTrailOverlay } from './components/CodeTrailOverlay';
 import { ContactView } from './components/ContactView';
+import { FontTester, SHOW_FONT_TESTER } from './components/FontTester';
+import { PortfolioLoader } from './components/PortfolioLoader';
 import { ProjectsView } from './components/ProjectsView';
 import { siteContent, type ViewId, views } from './data/siteContent';
 
@@ -14,6 +16,7 @@ function getViewFromHash(): ViewId {
 
 export default function App() {
   const [activeView, setActiveView] = useState<ViewId>(() => getViewFromHash());
+  const [backgroundReady, setBackgroundReady] = useState(false);
   const panelRefs = useRef<Record<ViewId, HTMLElement | null>>({
     about: null,
     projects: null,
@@ -61,7 +64,7 @@ export default function App() {
 
   return (
     <>
-      <BackgroundScene />
+      <BackgroundScene onReady={() => setBackgroundReady(true)} />
       <CodeTrailOverlay />
       <div className={`contact-background-softener${activeView === 'contact' ? ' is-visible' : ''}`} aria-hidden="true" />
       <div className="top-mini">{siteContent.topLabel}</div>
@@ -75,6 +78,8 @@ export default function App() {
       </main>
 
       <BottomDock activeView={activeView} onNavigate={navigateTo} />
+      {SHOW_FONT_TESTER ? <FontTester /> : null}
+      <PortfolioLoader backgroundReady={backgroundReady} />
     </>
   );
 }

@@ -1,9 +1,39 @@
-import backgroundImage from '../../assets/2ndop.png';
+import backgroundAvif1280 from '../../assets/background-1280.avif';
+import backgroundAvif1912 from '../../assets/background-1912.avif';
+import backgroundWebp1280 from '../../assets/background-1280.webp';
+import backgroundWebp1912 from '../../assets/background-1912.webp';
 
-export function BackgroundScene() {
+type BackgroundSceneProps = {
+  onReady?: () => void;
+};
+
+export function BackgroundScene({ onReady }: BackgroundSceneProps) {
   return (
     <div className="background-scene">
-      <img className="background-photo" src={backgroundImage} alt="" aria-hidden="true" />
+      <picture>
+        <source
+          type="image/avif"
+          srcSet={`${backgroundAvif1280} 1280w, ${backgroundAvif1912} 1912w`}
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          srcSet={`${backgroundWebp1280} 1280w, ${backgroundWebp1912} 1912w`}
+          sizes="100vw"
+        />
+        <img
+          className="background-photo"
+          src={backgroundWebp1912}
+          srcSet={`${backgroundWebp1280} 1280w, ${backgroundWebp1912} 1912w`}
+          sizes="100vw"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          fetchPriority="high"
+          onLoad={onReady}
+          onError={onReady}
+        />
+      </picture>
     </div>
   );
 }
