@@ -1,7 +1,7 @@
-import backgroundAvif1280 from '../../assets/background-1280.avif';
-import backgroundAvif1912 from '../../assets/background-1912.avif';
-import backgroundWebp1280 from '../../assets/background-1280.webp';
-import backgroundWebp1912 from '../../assets/background-1912.webp';
+import backgroundAvif1280 from '../../assets/sundownnew.webp';
+import backgroundAvif1912 from '../../assets/sundownnew.webp';
+import backgroundWebp1280 from '../../assets/sundownnew.webp';
+import backgroundWebp1912 from '../../assets/sundownnew.webp';
 
 type BackgroundSceneProps = {
   onReady?: () => void;
