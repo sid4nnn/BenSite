@@ -1,7 +1,7 @@
-import backgroundAvif1280 from '../../assets/sundownnew.webp';
-import backgroundAvif1912 from '../../assets/sundownnew.webp';
-import backgroundWebp1280 from '../../assets/sundownnew.webp';
-import backgroundWebp1912 from '../../assets/sundownnew.webp';
+import backgroundAvif1280 from '../../assets/sundownnew-1280.avif';
+import backgroundAvif1646 from '../../assets/sundownnew-1646.avif';
+import backgroundWebp1280 from '../../assets/sundownnew-1280.webp';
+import backgroundWebp1646 from '../../assets/sundownnew-1646.webp';
 
 type BackgroundSceneProps = {
   onReady?: () => void;
@@ -13,18 +13,18 @@ export function BackgroundScene({ onReady }: BackgroundSceneProps) {
       <picture>
         <source
           type="image/avif"
-          srcSet={`${backgroundAvif1280} 1280w, ${backgroundAvif1912} 1912w`}
+          srcSet={`${backgroundAvif1280} 1280w, ${backgroundAvif1646} 1646w`}
           sizes="100vw"
         />
         <source
           type="image/webp"
-          srcSet={`${backgroundWebp1280} 1280w, ${backgroundWebp1912} 1912w`}
+          srcSet={`${backgroundWebp1280} 1280w, ${backgroundWebp1646} 1646w`}
           sizes="100vw"
         />
         <img
           className="background-photo"
-          src={backgroundWebp1912}
-          srcSet={`${backgroundWebp1280} 1280w, ${backgroundWebp1912} 1912w`}
+          src={backgroundWebp1646}
+          srcSet={`${backgroundWebp1280} 1280w, ${backgroundWebp1646} 1646w`}
           sizes="100vw"
           alt=""
           aria-hidden="true"
